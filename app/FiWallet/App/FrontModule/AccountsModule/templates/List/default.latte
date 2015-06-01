@@ -1,0 +1,40 @@
+{block content}
+  <div class="container-fluid">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        Accounts
+        <small>Overview</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li>
+          <i class="fa fa-dashboard"></i> <a n:href=":Front:Dashboard:">Dashboard</a>
+        </li>
+        <li class="active">
+          <i class="fa fa-bank"></i> Accounts
+        </li>
+      </ol>
+
+      <p><a n:href="Add:" class="btn btn-warning"><i class="fa fa-plus"></i> New account</a></p>
+
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Balance</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr n:foreach="$accounts as $account">
+          <td>{$account->name}</td>
+          <td>{$account->balance|number:2:',':' '} {$account->currency}</td>
+          <td>
+            <a n:href="Edit:, id => $account->id" class="btn btn-xs btn-default"><i class="fa fa-fw fa-edit"></i> Edit</a>
+            <a href="#" class="btn btn-xs btn-default"><i class="fa fa-fw fa-bar-chart-o"></i> View transactions</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+{/block}

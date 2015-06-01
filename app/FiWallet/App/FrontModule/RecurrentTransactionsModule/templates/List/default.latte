@@ -1,0 +1,40 @@
+{block content}
+  <div class="container-fluid">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        Recurrent transactions
+        <small>Overview</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li>
+          <i class="fa fa-dashboard"></i> <a n:href=":Front:Dashboard:">Dashboard</a>
+        </li>
+        <li class="active">
+          <i class="fa fa-clock-o"></i> Recurrent transactions
+        </li>
+      </ol>
+
+      <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Is active?</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr n:foreach="$recTransactions as $trans">
+          <td>{$trans->name}</td>
+          <td>{$trans->amount|number:2:',':' '} {$trans->account->currency}</td>
+          <td>{if $trans->isActive}Yes{else}No{/if}</td>
+          <td>
+            <a n:href="Edit:, $trans->id" class="btn btn-xs btn-default"><i class="fa fa-fw fa-edit"></i> Edit</a>
+            <a n:href="toggleActive!, $trans->id" class="btn btn-xs btn-default"><i class="fa fa-fw fa-power-off"></i> {if $trans->isActive}Deactivate{else}Activate{/if}</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+{/block}

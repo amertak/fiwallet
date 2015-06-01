@@ -1,0 +1,140 @@
+{block content}
+  <div class="container-fluid">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        Statistics
+        <small>Overview</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li>
+          <i class="fa fa-dashboard"></i> <a n:href=":Front:Dashboard:">Dashboard</a>
+        </li>
+        <li class="active">
+          <i class="fa fa-bar-chart-o"></i> Statistics
+        </li>
+      </ol>
+    </div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">&nbsp;<br>&nbsp;</h3>
+          </div>
+          <div class="panel-body">
+            <div id="container"></div>
+          </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a n:href="previousWeek!, $weekFromNow" class="btn btn-primary" >Previous week</a>
+            <a n:href="reset!" class="btn btn-success" >This week</a>
+            <a n:href="nextWeek!, $weekFromNow" class="btn btn-primary" >Next week</a>
+          </div>
+          <div class="panel-body">
+            <div id="container1"></div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+  </div>
+  <div class="panel-body">
+    <div id="container2"></div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+  </div>
+  <div class="panel-body">
+    <div id="container3"></div>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    {form fromToForm, role => 'form', class=>"form-inline"}
+    <div class="row">
+        {label from}{/label}
+        {input from, class=>"form-control", type=>"date", placeholder=>"Enter From Date", size=>"14"}
+        {label to}{/label}
+        {input to, class=>"form-control", type=>"date", placeholder=>"Enter To Date", size=>"14"}
+        {label fromAmount}{/label}
+        {input fromAmount, class=>"form-control", placeholder=>"Enter Amount", size=>"12"}
+        {label toAmount}{/label}
+        {input toAmount, class=>"form-control", placeholder=>"Enter Amount", size=>"12"}
+        {input send, class=>"btn btn-primary"}
+        <a n:href="reset!" class="btn btn-danger" >Reset filter</a>
+    </div>
+    {/form}
+    <div class="row">
+    {ifset $isFiltered}
+      <div class="alert alert-success">
+          {ifset $filterFrom}
+            Date from: {$filterFrom}
+          {/ifset}
+          {ifset $filterTo}
+            Date to: {$filterTo}
+          {/ifset}
+          {ifset $filterFromAmount}
+            Amount from: {$filterFromAmount}
+          {/ifset}
+          {ifset $filterToAmount}
+            Amount to: {$filterToAmount}
+          {/ifset}
+      </div>
+    {/ifset}
+    </div>
+
+
+  </div>
+  <div class="panel-body">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Description of Transaction</th>
+        <th>Date of Transaction</th>
+        <th>Amount</th>
+        <th>Edit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr n:foreach="$transactions as $transaction">
+        <td>{$transaction->name}</td>
+        <td>{$transaction->dateOfTransaction->format('Y-m-d')}</td>
+        <td class="{if $transaction->amount > 0}alert-success{else}alert-danger{/if}">{$transaction->amount}</td>
+      <td>
+       <a href="/#/transaction/{$transaction->id}" class="btn btn-xs btn-default"><i class="fa fa-fw fa-edit"></i> Edit</a>
+      </td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+  </div>
+</div>
+
+
+
+{/block}
+
+{block scripts}
+  <script type='text/javascript'>
+    {$js|noescape}
+  </script>
+  <script type='text/javascript'>
+    {$js1|noescape}
+  </script>
+  <script type='text/javascript'>
+    {$js2|noescape}
+  </script>
+  <script type='text/javascript'>
+    {$js3|noescape}
+  </script>
+
+{/block}

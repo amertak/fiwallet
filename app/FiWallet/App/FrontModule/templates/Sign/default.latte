@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign in form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="./css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="./css/signin.css" rel="stylesheet" media="screen">
+        <link href="./css/custom.css" rel="stylesheet" media="screen">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="../../assets/js/html5shiv.js"></script>
+          <script src="../../assets/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container">
+            <div n:foreach="$flashes as $flash" n:class="alert, $flash->type">{$flash->message}</div>
+
+            {form loginForm, class=>"form-signin"}
+                <h2 class="form-signin-heading">Log in</h2>
+                <div class="form-group">
+                    {input username, class=>"form-control top", placeholder=>"Username (login)", required=>"required"}
+                    {input password, class=>"form-control bottom", placeholder=>"Password", required=>"required"}
+                </div>
+                {input send, class=>"btn btn-lg btn-primary btn-block"}
+                <button class="notRegistered btn btn-lg btn-info btn-block" >Not Registered?</button>
+                {*<button class="forgotPassword btn btn-lg btn-default btn-block" >Forgot Password?</button>*}
+            {/form}
+
+            {form registrationForm, class=>"form-signin display-none"}
+                <h2 class="form-signin-heading">Sign up</h2>
+                <div class="form-group">
+                {input username, class=>"form-control", placeholder=>"Username", required=>"required"}
+                {input email, class=>"form-control", placeholder=>"E-mail", required=>"required"}
+                {input fullName, class=>"form-control", placeholder=>"Your full name", required=>"required"}
+                </div>
+                <div class="form-group">
+                {input password, class=>"form-control top", placeholder=>"Password", required=>"required"}
+                {input password2, class=>"form-control bottom", placeholder=>"Repeat password", required=>"required"}
+                </div>
+                {input send, class=>"btn btn-lg btn-primary btn-block"}
+                <button class="btn btn-lg btn-info btn-block backToLogin" >Back to Log In</button>
+            {/form}
+
+            {*PASSWORD RESET*}
+            {*<form id="formForgotPassword" name="formForgotPassword" class="form-signin display-none" method="post" action="main.php">*}
+                {*<h2 class="form-signin-heading">Forgot password?</h2>*}
+                {*<input name="email" type="email" class="form-control mb10" placeholder="Email address" required>*}
+                {*<button class="btn btn-lg btn-primary btn-block" type="submit">Reset password</button>*}
+                {*<button class="btn btn-lg btn-info btn-block backToLogin" >Back to Log In</button>*}
+                {*<input name="submit" type="text" value="forgotPassword" class="display-none">*}
+            {*</form>*}
+        </div>
+
+        <script src="{$basePath}/js/bundle.js?v={$bundleJsVersion}"></script>
+    </body>
+</html>

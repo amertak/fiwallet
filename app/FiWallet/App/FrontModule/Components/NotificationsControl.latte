@@ -1,0 +1,10 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle {if $unreadNotificationCount > 0}has-unread-notifications{/if}" data-toggle="dropdown"><i class="fa fa-bell"></i> {if $unreadNotificationCount > 0}{$unreadNotificationCount}{/if} <b class="caret"></b></a>
+  <ul class="dropdown-menu alert-dropdown">
+    <li n:foreach="$notifications as $notification">
+      <a n:href="notificationClick!, notificationId => $notification->id">{$notification->data} <span class="label label-info" n:if="!$notification->isRead">Unread</span></a>
+    </li>
+    <li class="divider"></li>
+    <li><a n:href="readAll!">Mark all as read</a></li>
+  </ul>
+</li>

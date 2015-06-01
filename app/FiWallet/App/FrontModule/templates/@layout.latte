@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>FiWallet</title>
+
+  <link href="{$basePath}/css/bootstrap.css" rel="stylesheet">
+  <link href="{$basePath}/css/bootstrap-theme.css" rel="stylesheet">
+  <link href="{$basePath}/css/sb-admin.css" rel="stylesheet">
+  <link href="{$basePath}/css/daterangepicker-bs3.css" rel="stylesheet">
+  <link href="{$basePath}/css/react-tagsinput.css" rel="stylesheet">
+
+  <link href="{$basePath}/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <link href="{$basePath}/css/fiwallet.css?v=2015-05-07-1100" rel="stylesheet">
+  {block head}{/block}
+</head>
+
+<body>
+
+<div id="wrapper">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/#/">FiWallet</a>
+    </div>
+    <!-- Top Menu Items -->
+    <ul class="nav navbar-right top-nav">
+      {control notifications}
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {$user->identity->fullName}
+          <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li>
+            <a n:href=":Front:Users:Edit:"><i class="fa fa-fw fa-gear"></i> User settings</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="{link logout!}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav side-nav">
+        <li {ifCurrent :Front:Dashboard:}class="active"{/ifCurrent}>
+          <a href="/#/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+        </li>
+        <li {ifCurrent :Front:Statistics:List:}class="active"{/ifCurrent}>
+          <a n:href=":Front:Statistics:List:"><i class="fa fa-fw fa-bar-chart-o"></i> Stats</a>
+        </li>
+        <li {ifCurrent :Front:Filters:List:}class="active"{/ifCurrent}{ifCurrent :Front:Filters:Add:}class="active"{/ifCurrent}{ifCurrent :Front:Filters:Edit:}class="active"{/ifCurrent}>
+          <a n:href=":Front:Filters:List:"><i class="fa fa-fw fa-table"></i> Filters</a>
+        </li>
+        <li {ifCurrent :Front:RecurrentTransactions:List:}class="active"{/ifCurrent}{ifCurrent :Front:RecurrentTransactions:CreateFromTransaction:}class="active"{/ifCurrent}{ifCurrent :Front:RecurrentTransactions:Edit:}class="active"{/ifCurrent}>
+          <a n:href=":Front:RecurrentTransactions:List:"><i class="fa fa-fw fa-clock-o"></i> Recurrent Transactions</a>
+        </li>
+        <li {ifCurrent :Front:Accounts:List:}class="active"{/ifCurrent}{ifCurrent :Front:Accounts:Add:}class="active"{/ifCurrent}{ifCurrent :Front:Accounts:Edit:}class="active"{/ifCurrent}>
+          <a n:href=":Front:Accounts:List:"><i class="fa fa-fw fa-bank"></i> Accounts</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div id="page-wrapper">
+    <div n:foreach="$flashes as $flash" n:class="alert, $flash->type">{$flash->message}</div>
+
+    {include content}
+
+  </div>
+</div>
+
+<script src="{$basePath}/js/bundle.js?v={$bundleJsVersion}"></script>
+{block scripts}{/block}
+</body>
+</html>

@@ -1,0 +1,30 @@
+services:
+    migrations.diff:
+        class: Doctrine\DBAL\Migrations\Tools\Console\Command\DiffCommand()
+        tags: [kdyby.console.command]
+        autowired: no
+
+    migrations.execute:
+        class: Doctrine\DBAL\Migrations\Tools\Console\Command\ExecuteCommand()
+        tags: [kdyby.console.command]
+        autowired: no
+
+    migrations.generate:
+        class: Doctrine\DBAL\Migrations\Tools\Console\Command\GenerateCommand()
+        tags: [kdyby.console.command]
+        autowired: no
+
+    migrations.migrate:
+        class: Doctrine\DBAL\Migrations\Tools\Console\Command\MigrateCommand()
+        tags: [kdyby.console.command]
+        autowired: no
+
+    migrations.status:
+        class: Doctrine\DBAL\Migrations\Tools\Console\Command\StatusCommand()
+        tags: [kdyby.console.command]
+        autowired: no
+
+    migrations.version:
+        class: Doctrine\DBAL\Migrations\Tools\Console\Command\VersionCommand()
+        tags: [kdyby.console.command]
+        autowired: no

@@ -1,0 +1,4 @@
+name: FiWallet Migrations
+migrations_namespace: FiWallet\Database\Migrations
+table_name: doctrine_migration_versions
+migrations_directory: app/FiWallet/Database/Migrations/

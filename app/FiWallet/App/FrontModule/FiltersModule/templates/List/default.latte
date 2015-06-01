@@ -1,0 +1,37 @@
+{block content}
+  <div class="container-fluid">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        Filters
+        <small>Overview</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li>
+          <i class="fa fa-dashboard"></i> <a n:href=":Front:Dashboard:">Dashboard</a>
+        </li>
+        <li class="active">
+          <i class="fa fa-table"></i> Filters
+        </li>
+      </ol>
+
+      <p><a n:href="Add:" class="btn btn-warning"><i class="fa fa-plus"></i> New filter</a></p>
+
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr n:foreach="$filters as $filter">
+            <td>{$filter->name}</td>
+            <td>
+              <a n:href="Edit:, id => $filter->id" class="btn btn-xs btn-default"><i class="fa fa-fw fa-edit"></i> Edit</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+{/block}
