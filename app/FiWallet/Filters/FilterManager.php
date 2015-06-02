@@ -8,7 +8,7 @@ use Kdyby\Doctrine\EntityManager;
 use FiWallet\Users\User;
 
 /**
- * @author Adam Studenic>
+ * @author Adam Studenic
  * @author Pavel Kouřil <pavel.kouril@hotmail.com>
  */
 class FilterManager extends Object
